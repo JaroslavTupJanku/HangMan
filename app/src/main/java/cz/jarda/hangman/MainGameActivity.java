@@ -1,50 +1,62 @@
 package cz.jarda.hangman;
+import cz.jarda.models.WordManager;
+import cz.jarda.models.WordType;
+import cz.jarda.services.TextViewFactory;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainGameActivity extends AppCompatActivity
 {
     ImageView imageTitleAnimation;
+    TableRow myTableRow;
     ImageView imgHangman;
     EditText etInputChar;
     TextView labelIncorrectChars;
-
-    private int score = 10000;
-    private int guessCount = 0;
-    private int occurrenceCount = 0;
-    private int multiplier = 0;
-
-    int categoryId = 0;
-    private String word = "";
-    private String misguessedChars = "";
-    private String guessedChars = "";
-
-    TextView[] wordChars = new TextView[10];
-
-    int[] allowedChars = new int[] {
-            97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110,
-            111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122,
-            283, 353, 357, 269, 345, 382, 253, 225, 237, 233, 367, 250, 243};
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_game);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+
+        WordType wordType = (WordType)getIntent().getSerializableExtra("WordType");
+        fillTableRow(new WordManager(), wordType);
     }
 
-    public void addChar(View view)
+    private void fillTableRow(WordManager manager, WordType type)
     {
+        TextViewFactory factory = new TextViewFactory(this);
+        myTableRow = findViewById(R.id.myTableRow);
+
+        //Lambda expression word is a callback that is executed when the word is retrieved asynchronously by the generateNewWord method.
+        //When a word is available, this lambda expression receives that word as an argument (word) and executes the code inside;
+        manager.generateNewWord(type).observe(this, word ->
+        {
+            if (word != null)
+            {
+                for (int i = 0; i < word.length(); i++)
+                {
+                    myTableRow.addView(factory.createTextView(i));
+                }
+            }
+            else
+            {
+                Toast.makeText(this, "Error fetching word", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    public void addChar (View view)
+    {
+
     }
 }

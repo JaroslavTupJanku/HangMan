@@ -28,7 +28,7 @@
         android:layout_marginTop="80dp">
 
         <RadioButton
-            android:id="@+id/rbInfo"
+            android:id="@+id/rbNoun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -40,7 +40,7 @@
             android:textSize="25sp" />
 
         <RadioButton
-            android:id="@+id/rbCities"
+            android:id="@+id/rbVerb"
             android:buttonTint="#007BFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             android:textSize="25sp" />
 
         <RadioButton
-            android:id="@+id/rbAnimals"
+            android:id="@+id/rbAdjective"
             android:buttonTint="#007BFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
             android:textSize="25sp" />
 
         <RadioButton
-            android:id="@+id/rbCars"
+            android:id="@+id/rbAdverb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:bufferType="normal"
