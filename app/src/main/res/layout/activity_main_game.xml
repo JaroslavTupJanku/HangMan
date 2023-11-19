@@ -11,16 +11,15 @@
     tools:layout_editor_absoluteY="-19dp">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/myImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/hangman"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/hangman_0" />
+        app:srcCompat="@drawable/hangman0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -65,6 +64,7 @@
         android:layout_height="wrap_content"
         android:width="0dp"
         android:height="0dp"
+        android:hint="@string/type_the_letter"
         android:autofillHints="Set letter"
         android:foregroundTint="@color/white"
         android:inputType="textCapCharacters"
@@ -80,318 +80,22 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#007BFF"
         android:onClick="addChar"
-        android:text="Enter"
+        android:text="@string/enter"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toEndOf="@+id/etInput"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
+    <TextView
+        android:id="@+id/labelIncorrectEntries"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:textColor="#FF0000"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- <TextView
-    android:id="@+id/textView13"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:foregroundTint="@color/white"
-    android:text="_"
-    app:layout_constraintBottom_toTopOf="@+id/guideline2"
-    app:layout_constraintEnd_toStartOf="@+id/textView15"
-    app:layout_constraintStart_toEndOf="@+id/textView16"
-    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-<TextView
-    android:id="@+id/textView14"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:foregroundTint="@color/white"
-    android:text="_"
-    app:layout_constraintBottom_toTopOf="@+id/guideline2"
-    app:layout_constraintEnd_toStartOf="@+id/textView22"
-    app:layout_constraintStart_toEndOf="@+id/textView15"
-    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-<TextView
-    android:id="@+id/textView15"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:foregroundTint="@color/white"
-    android:text="_"
-    app:layout_constraintBottom_toTopOf="@+id/guideline2"
-    app:layout_constraintEnd_toStartOf="@+id/textView14"
-    app:layout_constraintStart_toEndOf="@+id/textView13"
-    app:layout_constraintTop_toBottomOf="@+id/imageView2"
-    app:layout_constraintVertical_bias="0.5" />
-
-
-
-<TextView
-    android:id="@+id/textView16"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:foregroundTint="@color/white"
-    android:text="_"
-    app:layout_constraintBottom_toTopOf="@+id/guideline2"
-    app:layout_constraintEnd_toStartOf="@+id/textView13"
-    app:layout_constraintHorizontal_chainStyle="spread_inside"
-    app:layout_constraintStart_toStartOf="@+id/guideline3"
-    app:layout_constraintTop_toTopOf="@+id/guideline" />
-
-<TextView
-    android:id="@+id/textView17"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:foregroundTint="@color/white"
-    android:text="_"
-    app:layout_constraintBottom_toTopOf="@+id/guideline2"
-    app:layout_constraintEnd_toStartOf="@+id/textView21"
-    app:layout_constraintStart_toEndOf="@+id/textView20"
-    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-<TextView
-    android:id="@+id/textView18"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:foregroundTint="@color/white"
-    android:text="_"
-    app:layout_constraintBottom_toTopOf="@+id/guideline2"
-    app:layout_constraintEnd_toStartOf="@+id/textView19"
-    app:layout_constraintStart_toEndOf="@+id/textView21"
-    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-<TextView
-    android:id="@+id/textView19"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:foregroundTint="@color/white"
-    android:text="_"
-    app:layout_constraintBottom_toTopOf="@+id/guideline2"
-    app:layout_constraintEnd_toStartOf="@+id/guideline4"
-    app:layout_constraintStart_toEndOf="@+id/textView18"
-    app:layout_constraintTop_toTopOf="@+id/guideline" />
-
-<TextView
-    android:id="@+id/textView20"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:foregroundTint="@color/white"
-    android:text="_"
-    app:layout_constraintBottom_toTopOf="@+id/guideline2"
-    app:layout_constraintEnd_toStartOf="@+id/textView17"
-    app:layout_constraintStart_toEndOf="@+id/textView22"
-    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-<TextView
-    android:id="@+id/textView21"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:foregroundTint="@color/white"
-    android:text="_"
-    app:layout_constraintBottom_toTopOf="@+id/guideline2"
-    app:layout_constraintEnd_toStartOf="@+id/textView18"
-    app:layout_constraintStart_toEndOf="@+id/textView17"
-    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-<TextView
-    android:id="@+id/textView22"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:foregroundTint="@color/white"
-    android:text="_"
-    app:layout_constraintBottom_toTopOf="@+id/guideline2"
-    app:layout_constraintEnd_toStartOf="@+id/textView20"
-    app:layout_constraintStart_toEndOf="@+id/textView14"
-    app:layout_constraintTop_toBottomOf="@+id/imageView2" /> -->
-
-    <!--    <LinearLayout-->
-    <!--        android:id="@+id/layoutEntering"-->
-    <!--        android:layout_width="fill_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        android:orientation="vertical"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent">-->
-
-    <!--        <TableRow-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_gravity="center_horizontal|top">-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/labelChar1"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_gravity="center"-->
-    <!--                android:layout_marginStart="6dp"-->
-    <!--                android:layout_marginEnd="8dp"-->
-    <!--                android:layout_marginBottom="3dp"-->
-    <!--                android:text="@string/empty_char"-->
-    <!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
-    <!--                android:textColor="#80FFFFFF"-->
-    <!--                android:textSize="35sp" />-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/labelChar2"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_gravity="center"-->
-    <!--                android:layout_marginStart="6dp"-->
-    <!--                android:layout_marginEnd="8dp"-->
-    <!--                android:layout_marginBottom="3dp"-->
-    <!--                android:text="@string/empty_char"-->
-    <!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
-    <!--                android:textColor="#80FFFFFF"-->
-    <!--                android:textSize="35sp" />-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/labelChar3"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_gravity="center"-->
-    <!--                android:layout_marginStart="6dp"-->
-    <!--                android:layout_marginEnd="8dp"-->
-    <!--                android:layout_marginBottom="3dp"-->
-    <!--                android:text="@string/empty_char"-->
-    <!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
-    <!--                android:textColor="#80FFFFFF"-->
-    <!--                android:textSize="35sp" />-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/labelChar4"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_gravity="center"-->
-    <!--                android:layout_marginStart="6dp"-->
-    <!--                android:layout_marginEnd="8dp"-->
-    <!--                android:layout_marginBottom="3dp"-->
-    <!--                android:text="@string/empty_char"-->
-    <!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
-    <!--                android:textColor="#80FFFFFF"-->
-    <!--                android:textSize="35sp" />-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/labelChar5"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_gravity="center"-->
-    <!--                android:layout_marginStart="6dp"-->
-    <!--                android:layout_marginEnd="8dp"-->
-    <!--                android:layout_marginBottom="3dp"-->
-    <!--                android:text="@string/empty_char"-->
-    <!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
-    <!--                android:textColor="#80FFFFFF"-->
-    <!--                android:textSize="35sp" />-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/labelChar6"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_gravity="center"-->
-    <!--                android:layout_marginStart="6dp"-->
-    <!--                android:layout_marginEnd="8dp"-->
-    <!--                android:layout_marginBottom="3dp"-->
-    <!--                android:text="@string/empty_char"-->
-    <!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
-    <!--                android:textColor="#80FFFFFF"-->
-    <!--                android:textSize="35sp" />-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/labelChar7"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_gravity="center"-->
-    <!--                android:layout_marginStart="6dp"-->
-    <!--                android:layout_marginEnd="8dp"-->
-    <!--                android:layout_marginBottom="3dp"-->
-    <!--                android:text="@string/empty_char"-->
-    <!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
-    <!--                android:textColor="#80FFFFFF"-->
-    <!--                android:textSize="35sp" />-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/labelChar8"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_gravity="center"-->
-    <!--                android:layout_marginStart="6dp"-->
-    <!--                android:layout_marginEnd="8dp"-->
-    <!--                android:layout_marginBottom="3dp"-->
-    <!--                android:text="@string/empty_char"-->
-    <!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
-    <!--                android:textColor="#80FFFFFF"-->
-    <!--                android:textSize="35sp" />-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/labelChar9"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_gravity="center"-->
-    <!--                android:layout_marginStart="6dp"-->
-    <!--                android:layout_marginEnd="8dp"-->
-    <!--                android:layout_marginBottom="3dp"-->
-    <!--                android:text="@string/empty_char"-->
-    <!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
-    <!--                android:textColor="#80FFFFFF"-->
-    <!--                android:textSize="35sp" />-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/labelChar10"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_gravity="center"-->
-    <!--                android:layout_marginStart="6dp"-->
-    <!--                android:layout_marginEnd="8dp"-->
-    <!--                android:layout_marginBottom="3dp"-->
-    <!--                android:text="@string/empty_char"-->
-    <!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
-    <!--                android:textColor="#80FFFFFF"-->
-    <!--                android:textSize="35sp" />-->
-    <!--        </TableRow>-->
-
-    <!--        <TableRow-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_gravity="bottom|center_horizontal"-->
-    <!--            android:layout_margin="10dp">-->
-
-    <!--            <TextView-->
-    <!--                android:id="@+id/labelHledej"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_marginEnd="10dp"-->
-    <!--                android:text="Ques:"-->
-    <!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
-    <!--                android:textColor="@android:color/white" />-->
-
-    <!--            <EditText-->
-    <!--                android:id="@+id/etInput"-->
-    <!--                android:layout_width="0dp"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_weight="1"-->
-    <!--                android:maxLength="1"-->
-    <!--                android:maxLines="1"-->
-    <!--                android:hint="Enter letter"-->
-    <!--                android:inputType="textCapCharacters"-->
-    <!--                android:textColor="@android:color/white"-->
-    <!--                app:layout_constraintStart_toStartOf="parent"-->
-    <!--                app:layout_constraintEnd_toStartOf="@id/btnInput"-->
-    <!--                app:layout_constraintTop_toTopOf="parent"-->
-    <!--                app:layout_constraintBottom_toBottomOf="parent" />-->
-
-    <!--            <Button-->
-    <!--                android:id="@+id/btnInput"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:backgroundTint="#007BFF"-->
-    <!--                android:onClick="addChar"-->
-    <!--                android:text="Enter"-->
-    <!--                android:layout_marginStart="15dp"-->
-    <!--                android:textSize="25sp"-->
-    <!--                app:layout_constraintStart_toEndOf="@id/etInput"-->
-    <!--                app:layout_constraintTop_toTopOf="parent"-->
-    <!--                app:layout_constraintBottom_toBottomOf="parent" />-->
-    <!--        </TableRow>-->
-
-    <!--    </LinearLayout>-->
 

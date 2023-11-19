@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">Hangman</string>
     <string name="empty_char">_</string>
-    <string name="enter_char">Enter:</string>
+    <string name="enter">Enter</string>
+    <string name="type_the_letter">Type the letter</string>
+    <string name="hangman">Image with hangman</string>
+
+    <string name="input_illegal_char">Unauthorized character entered…</string>
+    <string name="input_guessed_char">The specified char has already been guessed…</string>
+    <string name="input_unsuccessful_guessed">The specified letter has already been unsuccessfully guessed…</string>
+
+    <string name="word">word</string>
+    <string name="score">Score:</string>
+    <string name="name">Name:</string>
+    <string name="write_your_name">Write your name</string>
+    <string name="main_menu">Main menu</string>
+    <string name="save_score">Save score</string>
+    <string name="finishing_picture">Finishing picture</string>
 </resources>

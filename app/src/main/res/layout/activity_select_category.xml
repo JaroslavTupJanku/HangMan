@@ -28,7 +28,6 @@
         android:layout_marginTop="80dp">
 
         <RadioButton
-            android:id="@+id/rbNoun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -72,7 +71,6 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/btnStartGame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/rgCategory"

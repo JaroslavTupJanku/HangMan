@@ -12,24 +12,18 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Query;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-
-import java.io.IOException;
 
 public class WordProvider
 {
     private static final String BASE_URL = "https://api.api-ninjas.com/v1/";
     private static final String API_KEY = "tLXflHaWUniI/8pNjgjk2A==mgXgWl7DO5mzYLnb";
 
-    public class WordResponse //Model for JSON
+    private static class WordResponse //Model for JSON
     {
         private String word;
-
-        public String getWord()
-        {
-            return word;
-        }
     }
 
     private interface ApiService
@@ -37,7 +31,6 @@ public class WordProvider
         @GET("randomword")
         Call<WordResponse> getRandomWord(@Header("x-api-key") String ApiKey, @Query("type") WordType wordType);
     }
-
 
     public LiveData<String> getRandomWordAsync(WordType wordType)
     {
@@ -48,38 +41,36 @@ public class WordProvider
 
         MutableLiveData<String> liveData = new MutableLiveData<>();
         ApiService apiService = retrofit.create(ApiService.class);   //Implementation of API Interface
-        Call<WordResponse> call = apiService.getRandomWord(API_KEY, wordType);      //Java object with request. Not use yet.
 
-        call.enqueue(new Callback<WordResponse>() //Create an anonymous class that extends the Callback<T> Z retrofit class.
+        Call<WordResponse> call = apiService.getRandomWord(API_KEY, wordType);      //Java object with request. Not use yet.
+        call.enqueue(CreateCallBack(liveData));
+        return liveData;
+    }
+
+    private Callback<WordResponse> CreateCallBack(MutableLiveData<String> liveData)
+    {
+        return new Callback<WordResponse>() //Create an anonymous class that extends the Callback<T> Z retrofit class.
         {
             @Override
-            public void onResponse(Call<WordResponse> call, Response<WordResponse> response)
+            public void onResponse(@NonNull Call<WordResponse> call, @NonNull Response<WordResponse> response)
             {
                 if (response.isSuccessful())
                 {
-                    liveData.postValue(response.body().getWord());
+                    WordResponse wordResponse = response.body();
+                    liveData.postValue(wordResponse != null ? wordResponse.word : "Empty response");
                 }
                 else
                 {
-                    try
-                    {
-                        liveData.postValue(response.errorBody().string());
-                    }
-                    catch (IOException e)  //Cause string() can return IOException
-                    {
-                        Log.e(WordProvider.class.getSimpleName(), "Error parsing error body", e);
-                    }
+                    liveData.postValue("Error: " + response.code());
                 }
             }
 
             @Override
-            public void onFailure(Call<WordResponse> call, Throwable t)
+            public void onFailure(@NonNull Call<WordResponse> call, @NonNull Throwable t)
             {
-                liveData.postValue(null);
+                liveData.postValue("Failure: " + t.getMessage());
                 Log.e(WordProvider.class.getSimpleName(), "Call failed", t);
             }
-        });
-
-        return liveData;
+        };
     }
 }
