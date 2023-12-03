@@ -4,14 +4,14 @@ import android.media.MediaPlayer;
 
 import cz.jarda.hangman.R;
 
-public class Score
+public class ScoreCounter
 {
     private int score = 10000;
     private int multiplier = 1;
     private MediaPlayer mp;
-    private Context context;
+    private final Context context;
 
-    public Score(Context context)
+    public ScoreCounter(Context context)
     {
         this.context = context;
     }
