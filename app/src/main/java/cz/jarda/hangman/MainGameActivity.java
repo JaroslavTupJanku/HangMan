@@ -56,15 +56,14 @@ public class MainGameActivity extends AppCompatActivity
         //UI (Observer) is notified about change.
         manager.generateNewWord(type).observe(this, word ->
         {
-            if (word != null)
-            {
+            if (word != null) {
                 manager.setSearchWord(word);
                 for (int i = 0; i < word.length(); i++)
                 {
                     myTableRow.addView(factory.createTextView(i));
                 }
-            } else
-            {
+            }
+            else {
                 Toast.makeText(this, "Error fetching word", Toast.LENGTH_LONG).show();
             }
         });

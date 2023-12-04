@@ -16,4 +16,6 @@
     <string name="main_menu">Main menu</string>
     <string name="save_score">Save score</string>
     <string name="finishing_picture">Finishing picture</string>
+    <string name="Clear">Clear</string>
+    <string name="Return">Return</string>
 </resources>

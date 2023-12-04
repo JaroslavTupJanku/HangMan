@@ -98,7 +98,7 @@ public class EndGameActivity extends AppCompatActivity
             return;
         }
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);                 //Dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);                 // New dialog to accept loading score.
         builder.setCancelable(true);
         builder.setMessage("Do you want to save result of player: " + playerName + " ?");
         builder.setPositiveButton("Ano", (dialog, id) -> saveScoreToMemory());
@@ -113,7 +113,7 @@ public class EndGameActivity extends AppCompatActivity
         SharedPreferences preferences = getSharedPreferences("hangman_results", MODE_PRIVATE); //Private file for application
         String savedScores = preferences.getString("scores", ""); //if scores is not created yet, return default.
 
-        SharedPreferences.Editor editor = preferences.edit();
+        SharedPreferences.Editor editor = preferences.edit();                            // the simplest way to save primitive data like int, bool..
         editor.putString("scores", savedScores + playerName + ": " + lastScore + "\n");
         editor.apply(); //Apply changes - async
         finish();
