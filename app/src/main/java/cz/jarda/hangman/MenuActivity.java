@@ -20,13 +20,14 @@ public class MenuActivity extends AppCompatActivity
 
     public void newGame(View v)
     {
-        Intent i = new Intent(this, SelectCategoryActivity.class);
-        startActivity(i);
+        Intent intent = new Intent(this, SelectCategoryActivity.class);
+        startActivity(intent);
     }
 
     public void showScore(View v)
     {
-
+        Intent intent = new Intent(this, ShowScoreActivity.class);
+        startActivity(intent);
     }
 
     public void closeApp(View v)
