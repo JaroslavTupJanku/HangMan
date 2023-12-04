@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/black"
     android:layout_height="match_parent"
     android:padding="20dp"
     tools:context=".SelectCategoryActivity">
@@ -16,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:text="Select a word type:"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/white"
+
         android:textSize="25sp" />
 
     <RadioGroup
@@ -32,40 +31,35 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:bufferType="normal"
-            android:buttonTint="#007BFF"
-            android:checked="true"
             android:text=" Noun"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorPrimaryText"
             android:textSize="25sp" />
 
         <RadioButton
             android:id="@+id/rbVerb"
-            android:buttonTint="#007BFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
+            android:textColor="@color/colorPrimaryText"
             android:text=" Verb"
-            android:textColor="@android:color/white"
             android:textSize="25sp" />
 
         <RadioButton
             android:id="@+id/rbAdjective"
-            android:buttonTint="#007BFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryText"
             android:layout_marginBottom="5dp"
             android:text=" Adjective"
-            android:textColor="@android:color/white"
             android:textSize="25sp" />
 
         <RadioButton
             android:id="@+id/rbAdverb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryText"
             android:bufferType="normal"
-            android:buttonTint="#007BFF"
             android:text=" Adverb"
-            android:textColor="@android:color/white"
             android:textSize="25sp" />
 
     </RadioGroup>
@@ -76,7 +70,6 @@
         android:layout_above="@id/rgCategory"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:backgroundTint="#007BFF"
         android:onClick="startGame"
         android:text="Start"
         android:textSize="25sp" />

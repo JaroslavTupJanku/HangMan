@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -65,7 +66,7 @@ public class EndGameActivity extends AppCompatActivity
 
             anim.addFrame(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.e1)), 1500);
             anim.addFrame(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.e2)), 1500);
-            anim.addFrame(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.e3)), 1500);
+            //anim.addFrame(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.e3)), 1500);
         }
         else
         {
@@ -98,7 +99,7 @@ public class EndGameActivity extends AppCompatActivity
             return;
         }
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);                 // New dialog to accept loading score.
+        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AppTheme_Dialog));                 // New dialog to accept loading score.
         builder.setCancelable(true);
         builder.setMessage("Do you want to save result of player: " + playerName + " ?");
         builder.setPositiveButton("Ano", (dialog, id) -> saveScoreToMemory());

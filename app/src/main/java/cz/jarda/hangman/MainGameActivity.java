@@ -20,7 +20,7 @@ import android.widget.Toast;
 
 public class MainGameActivity extends AppCompatActivity
 {
-    private ImageView imageTitleAnimation;
+    //private ImageView imageTitleAnimation;
     private TableRow myTableRow;
     private EditText etInputChar;
     private TextView labelIncorrectChars;

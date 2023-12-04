@@ -21,7 +21,7 @@ public class TextViewFactory
         TextView textView = new TextView(context);
         textView.setId(id);
         textView.setText(context.getResources().getText(R.string.empty_char));
-        textView.setTextColor(context.getResources().getColor(R.color.white, context.getTheme()));
+        textView.setTextColor(context.getResources().getColor(R.color.colorPrimaryText, context.getTheme()));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
         textView.setLayoutParams(getLayoutParams());
 
