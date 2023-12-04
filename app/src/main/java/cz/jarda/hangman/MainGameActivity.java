@@ -1,5 +1,5 @@
 package cz.jarda.hangman;
-import cz.jarda.models.HangmanVisualizer;
+import cz.jarda.services.HangmanVisualizer;
 import cz.jarda.models.ScoreCounter;
 import cz.jarda.models.WordManager;
 import cz.jarda.models.WordType;
@@ -22,7 +22,6 @@ public class MainGameActivity extends AppCompatActivity
 {
     private ImageView imageTitleAnimation;
     private TableRow myTableRow;
-    private ImageView imgHangman;
     private EditText etInputChar;
     private TextView labelIncorrectChars;
 
@@ -38,8 +37,9 @@ public class MainGameActivity extends AppCompatActivity
         setContentView(R.layout.activity_main_game);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 
+        etInputChar = findViewById(R.id.etInput);
         labelIncorrectChars = findViewById(R.id.labelIncorrectEntries);
-        imgHangman = findViewById(R.id.myImageView);
+        ImageView imgHangman = findViewById(R.id.myImageView);
         hangmanVisualizer = new HangmanVisualizer(imgHangman);
 
         WordType wordType = (WordType) getIntent().getSerializableExtra("WordType");
@@ -136,7 +136,7 @@ public class MainGameActivity extends AppCompatActivity
     private void displayGuessedChar(char insertedChar, int index)
     {
         TextView textView = (TextView) myTableRow.getVirtualChildAt(index);
-        textView.setText(insertedChar);
+        textView.setText(String.valueOf(insertedChar));
     }
 
     private void updateMisGuessedLabels()

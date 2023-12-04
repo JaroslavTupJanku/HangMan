@@ -4,15 +4,21 @@ import static java.lang.String.*;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.media.MediaPlayer;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Objects;
 
 public class EndGameActivity extends AppCompatActivity
 {
@@ -40,11 +46,42 @@ public class EndGameActivity extends AppCompatActivity
         lastScore = intent.getIntExtra("score", 0);
         labelScore.setText(valueOf(lastScore));
         win = intent.getBooleanExtra("isWin", false);
-        word = intent.getStringExtra("word");
+        word = Objects.requireNonNull(intent.getStringExtra("word")).toUpperCase();
 
-        if (word != null) {
-            labelWord.setText(word.toUpperCase());
+        labelWord.setText(word.toUpperCase());
+        initAnimation();
+    }
+
+    private void initAnimation()  //Second way to create animation
+    {
+        AnimationDrawable anim = new AnimationDrawable();
+        ImageView image = findViewById(R.id.image);
+        MediaPlayer mp;
+
+        if (!win)
+        {
+            mp = MediaPlayer.create(this, R.raw.loosegame);
+            mp.start();
+
+            anim.addFrame(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.e1)), 1500);
+            anim.addFrame(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.e2)), 1500);
+            anim.addFrame(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.e3)), 1500);
         }
+        else
+        {
+            mp = MediaPlayer.create(this, R.raw.wingame);
+            mp.start();
+
+            anim.addFrame(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.v1)), 1000);
+            anim.addFrame(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.v2)), 1000);
+            anim.addFrame(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.v3)), 1000);
+            anim.addFrame(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.v4)), 1000);
+            anim.addFrame(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.v5)), 1000);
+            anim.addFrame(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.v6)), 1000);
+            anim.addFrame(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.v7)), 1000);
+        }
+        image.setBackground(anim);
+        anim.start();
     }
 
     public void saveScore(View v)
@@ -70,9 +107,6 @@ public class EndGameActivity extends AppCompatActivity
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
-
-
 
     private void saveScoreToMemory()
     {

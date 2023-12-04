@@ -1,4 +1,4 @@
-package cz.jarda.models;
+package cz.jarda.services;
 
 import android.widget.ImageView;
 import java.util.HashMap;
